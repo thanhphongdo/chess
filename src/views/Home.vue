@@ -1,5 +1,5 @@
 <template>
   <div class="home">
-    HOME
+    <svg id="svg"></svg>
   </div>
 </template>
