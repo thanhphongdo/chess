@@ -19,7 +19,8 @@ module.exports = {
         'func-names': ['error', 'as-needed'],
         'no-param-reassign': ['off'],
         'prefer-destructuring': ['off'],
-        'import/prefer-default-export': ['off']
+        'import/prefer-default-export': ['off'],
+        'prefer-const': ['off']
     },
     parserOptions: {
         parser: '@typescript-eslint/parser'
