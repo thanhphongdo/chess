@@ -62,19 +62,35 @@ export class Map {
         });
 
         self.cellList.filter(item => ((item.y == 10 || item.y == 11) && item.x >= 4 && item.x <= 8)
-                || ((item.y == 3 || item.y == 4) && item.x >= 6 && item.x <= 10)
-                || (item.x == 6 && item.y >= 5 && item.y <= 7)
-                || (item.x == 8 && item.y >= 7 && item.y <= 9)
-                || (item.x == 7 && item.y == 7)).forEach((item) => {
-            item.setAttr({
-                fill: Enums.RIVER_COLOR
+            || ((item.y == 3 || item.y == 4) && item.x >= 6 && item.x <= 10)
+            || (item.x == 6 && item.y >= 5 && item.y <= 7)
+            || (item.x == 8 && item.y >= 7 && item.y <= 9)
+            || (item.x == 7 && item.y == 7)).forEach((item) => {
+                item.setAttr({
+                    fill: Enums.RIVER_COLOR
+                });
             });
-        });
 
         self.cellList.filter(item => (item.x >= 11 && item.x <= 13 && item.y >= 9 && item.y <= 13) || (item.x >= 1 && item.x <= 3 && item.y >= 1 && item.y <= 5)).forEach((item) => {
             item.setAttr({
                 fill: Enums.FOREST_COLOR
             });
         });
+    }
+
+    getCellByName(name: string) {
+        let cells = this.cellList.filter(item => item.name == name);
+        if (cells && cells.length) return cells[0];
+        return null;
+    }
+
+    getCellByCoor(x: number, y: number) {
+        let cells = this.cellList.filter(item => item.x == x && item.y == y);
+        if (cells && cells.length) return cells[0];
+        return null;
+    }
+
+    getCellByCondition(condition: (cell: Cell) => boolean) {
+        return this.cellList.filter(item => condition(item));
     }
 }
