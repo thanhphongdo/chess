@@ -26,6 +26,6 @@ export default class Home extends Vue {
         setTimeout(() => {
             map.drawMap();
             (window as any).map = map;
-        }, 100);
+        }, 10);
     }
 }
