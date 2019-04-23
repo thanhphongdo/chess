@@ -20,7 +20,11 @@ module.exports = {
         'no-param-reassign': ['off'],
         'prefer-destructuring': ['off'],
         'import/prefer-default-export': ['off'],
-        'prefer-const': ['off']
+        'prefer-const': ['off'],
+        eqeqeq: ['off'],
+        'import/no-webpack-loader-syntax': ['off'],
+        'import/no-dynamic-require': ['off'],
+        'global-require': ['off']
     },
     parserOptions: {
         parser: '@typescript-eslint/parser'

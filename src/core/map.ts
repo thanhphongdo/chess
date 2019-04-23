@@ -66,10 +66,10 @@ export class Map {
             || (item.x == 6 && item.y >= 5 && item.y <= 7)
             || (item.x == 8 && item.y >= 7 && item.y <= 9)
             || (item.x == 7 && item.y == 7)).forEach((item) => {
-                item.setAttr({
-                    fill: Enums.RIVER_COLOR
-                });
+            item.setAttr({
+                fill: Enums.RIVER_COLOR
             });
+        });
 
         self.cellList.filter(item => (item.x >= 11 && item.x <= 13 && item.y >= 9 && item.y <= 13) || (item.x >= 1 && item.x <= 3 && item.y >= 1 && item.y <= 5)).forEach((item) => {
             item.setAttr({

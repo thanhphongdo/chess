@@ -1,5 +1,5 @@
 <template>
   <div class="home">
-    <svg id="svg" style="width: 600px; height: 600px"></svg>
+    <svg id="svg" style="width: 750px; height: 750px"></svg>
   </div>
 </template>

@@ -2,8 +2,9 @@ import { Component, Vue } from 'vue-property-decorator';
 import template from './home.vue';
 import { Enums } from '../shared/enum';
 import { Map } from '../core/map';
-import { Chessman } from '../core/chessman';
-var logo = require('@/assets/images/tk_a.png');
+import { Bishop, Defender, Knight, Ship, Soldier, Tank } from '../core/chessman/index';
+
+let logo = require('@/assets/images/tk_a.png');
 
 declare let Snap: any;
 let cellSize = Enums.CELL_SIZE;
@@ -14,7 +15,6 @@ let cellSize = Enums.CELL_SIZE;
     }
 })
 export default class Home extends Vue {
-
     data() {
         return {
             cellList: []
@@ -30,8 +30,18 @@ export default class Home extends Vue {
             setTimeout(() => {
                 console.log(logo);
                 // map.app.image(logo, 50, 50, 50, 50)
-                let chessman = new Chessman(app, 2, 2, 'bi', 'a', {fill: 'yellow'});
-                chessman.draw();
+                let bi = new Bishop(map, 2, 2, 'a', { fill: 'yellow' });
+                let de = new Defender(map, 3, 2, 'a', { fill: 'yellow' });
+                let kn = new Knight(map, 4, 2, 'a', { fill: 'yellow' });
+                let sh = new Ship(map, 5, 2, 'a', { fill: 'yellow' });
+                let so = new Soldier(map, 6, 2, 'a', { fill: 'yellow' });
+                let tk = new Tank(map, 7, 2, 'a', { fill: 'yellow' });
+                bi.draw();
+                de.draw();
+                kn.draw();
+                sh.draw();
+                so.draw();
+                tk.draw();
             }, 100);
             (window as any).map = map;
         }, 10);
