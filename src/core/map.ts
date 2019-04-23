@@ -13,7 +13,7 @@ export class Map {
         this.cellList = [];
     }
 
-    drawMap() {
+    draw() {
         let self = this;
         let appWidth = this.app.node.width.baseVal.value;
         let appHeight = this.app.node.height.baseVal.value;

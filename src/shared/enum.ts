@@ -4,7 +4,7 @@ export const Enums = {
     MAP_LINE_COLOR: '#OOO',
     MAP_LINE_WIDTH: '1',
     CELL_HOVER_OPACITY: 0.5,
-    CELL_SIZE: 40,
+    CELL_SIZE: 50,
     CAPITAL_COLOR: '#FF0000',
     CITY_COLOR: '#ab47bc',
     WALL_COLOR: '#ccc',
