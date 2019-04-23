@@ -34,7 +34,7 @@ export class Chessman {
     draw() {
         let snapX = this.x * this.cellSize;
         let snapY = this.y * this.cellSize;
-        this.background = this.app.circle(snapX + this.cellSize / 2, snapY + this.cellSize / 2, this.cellSize / 2).attr({ fill: 'yellow' });
+        this.background = this.app.circle(snapX + this.cellSize / 2, snapY + this.cellSize / 2, this.cellSize / 2 - 4).attr({ fill: 'yellow' });
         this.chessman = this.app.image(this.image, snapX, snapY, this.cellSize, this.cellSize).attr(this.attr || {});
     }
 }
