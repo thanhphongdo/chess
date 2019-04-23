@@ -1,34 +1,4 @@
-import { Component, Vue } from 'vue-property-decorator';
-import template from './home.vue';
 import { Enums } from '../shared/enum';
-import { Map } from '../core/map';
-
-declare let Snap: any;
-let cellSize = Enums.CELL_SIZE;
-
-@Component({
-    mixins: [template],
-    components: {
-    }
-})
-export default class Home extends Vue {
-    public cellList: Array<Cell> = [];
-
-    data() {
-        return {
-            cellList: []
-        };
-    }
-
-    mounted() {
-        let self = this;
-        let app: any = Snap('#svg');
-        let map = new Map(app);
-        setTimeout(() => {
-            map.drawMap();
-        }, 100);
-    }
-}
 
 export class Cell {
     public app: any;
@@ -43,6 +13,8 @@ export class Cell {
 
     public name: string;
 
+    private cellSize: number = Enums.CELL_SIZE;
+
     constructor(app: any, x: number, y: number, attr?: any) {
         this.app = app;
         this.x = x;
@@ -53,9 +25,9 @@ export class Cell {
     }
 
     draw(x: number, y: number, attr: any) {
-        let snapX = x * cellSize;
-        let snapY = y * cellSize;
-        this.cell = this.app.rect(snapX, snapY, cellSize, cellSize, 0, 0).attr(attr);
+        let snapX = x * this.cellSize;
+        let snapY = y * this.cellSize;
+        this.cell = this.app.rect(snapX, snapY, this.cellSize, this.cellSize, 0, 0).attr(attr);
     }
 
     setAttr(attr: any) {
