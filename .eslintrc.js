@@ -24,7 +24,8 @@ module.exports = {
         eqeqeq: ['off'],
         'import/no-webpack-loader-syntax': ['off'],
         'import/no-dynamic-require': ['off'],
-        'global-require': ['off']
+        'global-require': ['off'],
+        'import/no-cycle': ['off']
     },
     parserOptions: {
         parser: '@typescript-eslint/parser'

@@ -2,7 +2,9 @@ import { Component, Vue } from 'vue-property-decorator';
 import template from './home.vue';
 import { Enums } from '../shared/enum';
 import { Map } from '../core/map';
-import { Bishop, Defender, Knight, Ship, Soldier, Tank } from '../core/chessman/index';
+import {
+    Bishop, Defender, Knight, Ship, Soldier, Tank
+} from '../core/chessman/index';
 
 let logo = require('@/assets/images/tk_a.png');
 

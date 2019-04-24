@@ -1,6 +1,6 @@
 import { Enums } from '../../shared/enum';
 import { Map } from '../map';
-import {HistoryItemInterface} from '../interface';
+import { HistoryItemInterface } from '../interface';
 
 export class Chessman {
     public map: Map;
