@@ -1,5 +1,7 @@
 import { Cell } from './cell';
 import { Enums } from '../shared/enum';
+import { Chessman } from './chessman';
+import { HistoryItemInterface } from './interface';
 
 export class Map {
     public app: any;
@@ -8,9 +10,14 @@ export class Map {
 
     private cellSize: number = Enums.CELL_SIZE;
 
+    public step: number = 0;
+
+    public history: Array<HistoryItemInterface>;
+
     constructor(app: any) {
         this.app = app;
         this.cellList = [];
+        this.history = [];
     }
 
     draw() {
@@ -66,10 +73,10 @@ export class Map {
             || (item.x == 6 && item.y >= 5 && item.y <= 7)
             || (item.x == 8 && item.y >= 7 && item.y <= 9)
             || (item.x == 7 && item.y == 7)).forEach((item) => {
-            item.setAttr({
-                fill: Enums.RIVER_COLOR
+                item.setAttr({
+                    fill: Enums.RIVER_COLOR
+                });
             });
-        });
 
         self.cellList.filter(item => (item.x >= 11 && item.x <= 13 && item.y >= 9 && item.y <= 13) || (item.x >= 1 && item.x <= 3 && item.y >= 1 && item.y <= 5)).forEach((item) => {
             item.setAttr({
@@ -92,5 +99,23 @@ export class Map {
 
     getCellByCondition(condition: (cell: Cell) => boolean) {
         return this.cellList.filter(item => condition(item));
+    }
+
+    addHistory(chessman: Chessman) {
+        this.step++;
+        this.history.push({
+            time: new Date().getTime(),
+            step: this.step,
+            chessman: chessman,
+            x: chessman.x,
+            y: chessman.y,
+            faction: chessman.faction
+        });
+    }
+
+    getHistoryBystep(step: number) {
+        let historyItems = this.history.filter(item => item.step == step);
+        if (historyItems && historyItems.length) return historyItems[0];
+        return null;
     }
 }

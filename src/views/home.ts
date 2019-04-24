@@ -42,6 +42,7 @@ export default class Home extends Vue {
                 sh.draw();
                 so.draw();
                 tk.draw();
+                (window as any).bi = bi;
             }, 100);
             (window as any).map = map;
         }, 10);
