@@ -32,12 +32,12 @@ export default class Home extends Vue {
             setTimeout(() => {
                 console.log(logo);
                 // map.app.image(logo, 50, 50, 50, 50)
-                let bi = new Bishop(map, 2, 2, 'a', { fill: 'yellow' });
-                let de = new Defender(map, 3, 2, 'a', { fill: 'yellow' });
-                let kn = new Knight(map, 4, 2, 'a', { fill: 'yellow' });
-                let sh = new Ship(map, 5, 2, 'a', { fill: 'yellow' });
-                let so = new Soldier(map, 6, 2, 'a', { fill: 'yellow' });
-                let tk = new Tank(map, 7, 2, 'a', { fill: 'yellow' });
+                let bi = new Bishop(map, 2, 2, Enums.FACTION_A, { fill: 'yellow' });
+                let de = new Defender(map, 3, 2, Enums.FACTION_A, { fill: 'yellow' });
+                let kn = new Knight(map, 4, 2, Enums.FACTION_A, { fill: 'yellow' });
+                let sh = new Ship(map, 5, 2, Enums.FACTION_A, { fill: 'yellow' });
+                let so = new Soldier(map, 6, 2, Enums.FACTION_A, { fill: 'yellow' });
+                let tk = new Tank(map, 7, 2, Enums.FACTION_A, { fill: 'yellow' });
                 bi.draw();
                 de.draw();
                 kn.draw();

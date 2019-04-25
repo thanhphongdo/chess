@@ -8,6 +8,8 @@ export class Map {
 
     public cellList: Array<Cell>;
 
+    public chessmanList: Array<Chessman>;
+
     private cellSize: number = Enums.CELL_SIZE;
 
     public step: number = 0;
@@ -17,6 +19,7 @@ export class Map {
     constructor(app: any) {
         this.app = app;
         this.cellList = [];
+        this.chessmanList = [];
         this.history = [];
     }
 
@@ -47,6 +50,8 @@ export class Map {
                 cellObj.mouseout((cell: Cell) => {
                     cell.cell.attr({ opacity: Enums.MAP_OPACITY });
                 });
+                if (i < 7) cellObj.faction = Enums.FACTION_B;
+                if (i > 7) cellObj.faction = Enums.FACTION_A;
                 self.cellList.push(cellObj);
             }
         }
@@ -54,18 +59,21 @@ export class Map {
             item.setAttr({
                 fill: Enums.CITY_COLOR
             });
+            item.mapType = Enums.MAP_CITY;
         });
 
         self.cellList.filter(item => item.name == '14_0' || item.name == '0_14').forEach((item) => {
             item.setAttr({
                 fill: Enums.CAPITAL_COLOR
             });
+            item.mapType = Enums.MAP_CAPITAL;
         });
 
         self.cellList.filter(item => (item.x <= 1 && item.y == 9) || (item.x == 5 && item.y >= 13) || (item.x == 9 && item.y <= 1) || (item.x >= 13 && item.y == 5)).forEach((item) => {
             item.setAttr({
                 fill: Enums.WALL_COLOR
             });
+            item.mapType = Enums.MAP_WALL;
         });
 
         self.cellList.filter(item => ((item.y == 10 || item.y == 11) && item.x >= 4 && item.x <= 8)
@@ -73,15 +81,17 @@ export class Map {
             || (item.x == 6 && item.y >= 5 && item.y <= 7)
             || (item.x == 8 && item.y >= 7 && item.y <= 9)
             || (item.x == 7 && item.y == 7)).forEach((item) => {
-            item.setAttr({
-                fill: Enums.RIVER_COLOR
+                item.setAttr({
+                    fill: Enums.RIVER_COLOR
+                });
+                item.mapType = Enums.MAP_RIVER;
             });
-        });
 
         self.cellList.filter(item => (item.x >= 11 && item.x <= 13 && item.y >= 9 && item.y <= 13) || (item.x >= 1 && item.x <= 3 && item.y >= 1 && item.y <= 5)).forEach((item) => {
             item.setAttr({
                 fill: Enums.FOREST_COLOR
             });
+            item.mapType = Enums.MAP_FOREST;
         });
     }
 

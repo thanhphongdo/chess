@@ -1,6 +1,7 @@
 import { Enums } from '../../shared/enum';
 import { Map } from '../map';
 import { HistoryItemInterface } from '../interface';
+import { Cell } from '../cell';
 
 export class Chessman {
     public map: Map;
@@ -60,5 +61,23 @@ export class Chessman {
             y: this.y,
             faction: this.faction
         });
+    }
+
+    getAllowMoveCell() {
+        let self = this;
+        let distance = 3;
+        let currentCell = (self.map.getCellByCoor(self.x, self.y) as Cell);
+        if (currentCell.mapType == Enums.MAP_FOREST || currentCell.mapType == Enums.MAP_RIVER) {
+            distance = 2;
+        }
+        if (currentCell.faction != self.faction && (currentCell.mapType == Enums.MAP_CITY || currentCell.mapType == Enums.MAP_CAPITAL)) {
+            distance = 1;
+        }
+        let allowList = self.map.cellList.filter(item => {
+            if (item.x == self.x && item.y == self.y) return false;
+            return (item.x == self.x && item.y <= self.y + 3 && item.y >= self.y - distance) ||
+                (item.y == self.y && item.x <= self.x + 3 && item.x >= self.x - distance);
+        });
+
     }
 }

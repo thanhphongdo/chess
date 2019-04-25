@@ -9,5 +9,15 @@ export const Enums = {
     CITY_COLOR: '#ab47bc',
     WALL_COLOR: '#ccc',
     FOREST_COLOR: '#558b2f',
-    RIVER_COLOR: '#0277bd'
+    RIVER_COLOR: '#0277bd',
+    MAP_DETAULT: 0,
+    MAP_CAPITAL: 1,
+    MAP_CITY: 2,
+    MAP_FOREST: 3,
+    MAP_RIVER: 4,
+    MAP_WALL: 5,
+    FACTION_A: 'a',
+    FACTION_B: 'b',
+    FACTION_A_COLOR: 'yellow',
+    FACTION_B_COLOR: '#90caf9'
 };

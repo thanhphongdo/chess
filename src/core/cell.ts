@@ -15,6 +15,10 @@ export class Cell {
 
     private cellSize: number = Enums.CELL_SIZE;
 
+    public mapType: number = 0;
+
+    public faction: string = '';
+
     constructor(app: any, x: number, y: number, attr?: any) {
         this.app = app;
         this.x = x;
