@@ -28,7 +28,7 @@ export class Map {
         let appWidth = this.app.node.width.baseVal.value;
         let appHeight = this.app.node.height.baseVal.value;
 
-        for (let i = 0; i <= 15; i++) {
+        for (let i = 0; i <= 16; i++) {
             let lineH = this.app.line(0, this.cellSize * i, appWidth, this.cellSize * i).stroke({
                 width: 1
             });
@@ -36,10 +36,15 @@ export class Map {
             let lineV = this.app.line(this.cellSize * i, 0, this.cellSize * i, appHeight).stroke({
                 width: 1
             });
+
+            if (i == 8) {
+                lineH.stroke({ color: 'red' });
+                lineV.stroke({ color: 'red' });
+            }
         }
-        
-        for (let i = 0; i < 15; i++) {
-            for (let j = 0; j < 15; j++) {
+
+        for (let i = 0; i < 16; i++) {
+            for (let j = 0; j < 16; j++) {
                 let cellObj = new Cell(this.app, j, i, { fill: Enums.MAP_COLOR });
                 cellObj.mouseover((cell: Cell) => {
                     cell.cell.attr({ opacity: Enums.CELL_HOVER_OPACITY });
@@ -52,39 +57,38 @@ export class Map {
                 self.cellList.push(cellObj);
             }
         }
-        self.cellList.filter(item => (item.x >= 12 && item.y <= 2) || (item.x <= 2 && item.y >= 12)).forEach((item) => {
+        self.cellList.filter(item => (item.x >= 12 && item.y <= 3) || (item.x <= 3 && item.y >= 12)).forEach((item) => {
             item.setAttr({
                 fill: Enums.CITY_COLOR
             });
             item.mapType = Enums.MAP_CITY;
         });
 
-        self.cellList.filter(item => item.name == '14_0' || item.name == '0_14').forEach((item) => {
+        self.cellList.filter(item => item.name == '15_0' || item.name == '0_15').forEach((item) => {
             item.setAttr({
                 fill: Enums.CAPITAL_COLOR
             });
             item.mapType = Enums.MAP_CAPITAL;
         });
 
-        self.cellList.filter(item => (item.x <= 1 && item.y == 9) || (item.x == 5 && item.y >= 13) || (item.x == 9 && item.y <= 1) || (item.x >= 13 && item.y == 5)).forEach((item) => {
+        self.cellList.filter(item => (item.x <= 1 && item.y == 9) || (item.x == 6 && item.y >= 14) || (item.x == 9 && item.y <= 1) || (item.x >= 14 && item.y == 6)).forEach((item) => {
             item.setAttr({
                 fill: Enums.WALL_COLOR
             });
             item.mapType = Enums.MAP_WALL;
         });
 
-        self.cellList.filter(item => ((item.y == 10 || item.y == 11) && item.x >= 4 && item.x <= 8)
+        self.cellList.filter(item => ((item.y == 11 || item.y == 12) && item.x >= 5 && item.x <= 9)
             || ((item.y == 3 || item.y == 4) && item.x >= 6 && item.x <= 10)
-            || (item.x == 6 && item.y >= 5 && item.y <= 7)
-            || (item.x == 8 && item.y >= 7 && item.y <= 9)
-            || (item.x == 7 && item.y == 7)).forEach((item) => {
+            || (item.x == 7 && item.y >= 5 && item.y <= 8)
+            || (item.x == 8 && item.y >= 7 && item.y <= 10)).forEach((item) => {
                 item.setAttr({
                     fill: Enums.RIVER_COLOR
                 });
                 item.mapType = Enums.MAP_RIVER;
             });
 
-        self.cellList.filter(item => (item.x >= 11 && item.x <= 13 && item.y >= 9 && item.y <= 13) || (item.x >= 1 && item.x <= 3 && item.y >= 1 && item.y <= 5)).forEach((item) => {
+        self.cellList.filter(item => (item.x >= 12 && item.x <= 14 && item.y >= 10 && item.y <= 14) || (item.x >= 1 && item.x <= 3 && item.y >= 1 && item.y <= 5)).forEach((item) => {
             item.setAttr({
                 fill: Enums.FOREST_COLOR
             });
