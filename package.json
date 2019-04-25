@@ -11,6 +11,7 @@
     "core-js": "^2.6.5",
     "imports-loader": "^0.8.0",
     "snapsvg": "^0.5.1",
+    "svg.js": "^2.7.1",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0",

@@ -29,22 +29,19 @@ export class Map {
         let appHeight = this.app.node.height.baseVal.value;
 
         for (let i = 0; i <= 15; i++) {
-            let lineH = this.app.line(0, this.cellSize * i, appWidth, this.cellSize * i);
-            lineH.attr({
-                stroke: Enums.MAP_LINE_COLOR,
-                strokeWidth: 1
+            let lineH = this.app.line(0, this.cellSize * i, appWidth, this.cellSize * i).stroke({
+                width: 1
             });
 
-            let lineV = this.app.line(this.cellSize * i, 0, this.cellSize * i, appHeight);
-            lineV.attr({
-                stroke: Enums.MAP_LINE_COLOR,
-                strokeWidth: 1
+            let lineV = this.app.line(this.cellSize * i, 0, this.cellSize * i, appHeight).stroke({
+                width: 1
             });
         }
+        
         for (let i = 0; i < 15; i++) {
             for (let j = 0; j < 15; j++) {
-                let cellObj = new Cell(this.app, j, i, { stroke: '#123456', strokeWidth: 1, fill: Enums.MAP_COLOR });
-                cellObj.hover((cell: Cell) => {
+                let cellObj = new Cell(this.app, j, i, { fill: Enums.MAP_COLOR });
+                cellObj.mouseover((cell: Cell) => {
                     cell.cell.attr({ opacity: Enums.CELL_HOVER_OPACITY });
                 });
                 cellObj.mouseout((cell: Cell) => {

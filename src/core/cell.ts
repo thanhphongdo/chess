@@ -31,16 +31,16 @@ export class Cell {
     draw(x: number, y: number, attr: any) {
         let snapX = x * this.cellSize;
         let snapY = y * this.cellSize;
-        this.cell = this.app.rect(snapX, snapY, this.cellSize, this.cellSize, 0, 0).attr(attr);
+        this.cell = this.app.rect(this.cellSize - 2, this.cellSize - 2).move(snapX + 1, snapY + 1).attr(attr);
     }
 
     setAttr(attr: any) {
         this.cell.attr(attr);
     }
 
-    hover(callback: Function) {
+    mouseover(callback: Function) {
         let self = this;
-        this.cell.hover(() => {
+        this.cell.mouseover(() => {
             callback(self);
         });
     }

@@ -38,19 +38,21 @@ export class Chessman {
     }
 
     draw() {
-        let snapX = this.x * this.cellSize;
-        let snapY = this.y * this.cellSize;
-        this.background = this.map.app.circle(snapX + this.cellSize / 2, snapY + this.cellSize / 2, this.cellSize / 2 - 4).attr({ fill: 'yellow' });
-        this.chessman = this.map.app.image(this.image, snapX, snapY, this.cellSize, this.cellSize).attr(this.attr || {});
+        let snapX = this.x * this.cellSize + 3;
+        let snapY = this.y * this.cellSize + 3;
+        this.background = this.map.app.circle(this.cellSize - 6).move(snapX, snapY).attr(this.attr);
+        this.chessman = this.map.app.image(this.image, this.cellSize, this.cellSize).move(snapX, snapY).attr(this.attr || {});
     }
 
     move(x: number, y: number) {
+        let moveTime: number = 70 * Math.sqrt(Math.pow(this.cellSize * (x - this.x), 2) + Math.pow(this.cellSize * (y - this.y), 2)) / this.cellSize;
+        if (moveTime > 500) moveTime = 500;
         this.x = x;
         this.y = y;
         let snapX = this.x * this.cellSize;
         let snapY = this.y * this.cellSize;
-        this.background.attr({ cx: snapX + this.cellSize / 2, cy: snapY + this.cellSize / 2 });
-        this.chessman.attr({ x: snapX, y: snapY });
+        this.background.animate(moveTime, (pos: any) => (-Math.cos(pos * Math.PI) / 2) + 0.5).move(snapX + 3, snapY + 3);
+        this.chessman.animate(moveTime, (pos: any) => (-Math.cos(pos * Math.PI) / 2) + 0.5).move(snapX, snapY);
         let time = new Date().getTime();
         this.map.addHistory(this);
         this.history.push({
